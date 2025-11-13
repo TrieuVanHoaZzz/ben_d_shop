@@ -2,10 +2,15 @@ import { FaSearch } from "react-icons/fa";
 
 function Search() {
     return (
-<div className=" flex items-center text-center">
-    <FaSearch className="absolute text-gray-400 ms-2"/>
-    <input type="text" placeholder="Tìm kiếm sản phẩm" 
-    className="border hover:border-white rounded-md ps-6 pe-20 py-0.5 text-gray-600 bg-white"/>
+<div className="">
+    <section className="flex items-center bg-white py-1 px-2 rounded-md gap-1 ">
+        <span className=" inline-block font-light">
+            <FaSearch />
+        </span>
+        <input type="text" placeholder="Tìm kiếm sản phẩm" className=" focus:outline-0" />
+        <button className=" cursor-pointer text-amber-500 ms-10 hidden sm:block">Tìm kiếm</button>
+    </section>
+
 </div>
     );
 }
