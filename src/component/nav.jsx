@@ -1,8 +1,72 @@
+import { useState } from "react";
+import { IoMdMenu } from "react-icons/io";
+import Search from "./search";
+import Cart_Header from "./cart_header";
+import { IoIosArrowBack } from "react-icons/io";
+import { FaGoogle } from "react-icons/fa";
 
-function Nav()
-{
-    return(
-        <div>Nav</div>
+
+function Nav() {
+    const [pc, mobile] = useState(false);
+    const toggleMenu = () => {
+        console.log("clicked");
+        mobile(!pc);
+    };
+    return (
+        <div className="mt-5  ">
+            <div className="flex justify-between items-center ps-5 gap-3">
+                <div>
+                    <IoMdMenu onClick={toggleMenu} className="text-3xl xl:hidden cursor-pointer" />
+                </div>
+                <div className=" xl:hidden">
+                    <Search ></Search>
+                </div>
+                <div className=" xl:hidden ">
+                    <Cart_Header></Cart_Header>
+                </div>
+            </div>
+            <div className={` z-20  xl:px-50 flex justify-between   transition-all duration-400 ease-in-out absolute xl:static
+          ${pc ? 'left-0 top-0 xl:bg-white bg-gray-200 ' : '-left-[1000px] top-0 '} `}>
+                <div className=" xl:flex gap-4 items-center">
+                    <div className="xl:hidden block  ">
+                        <div className="bg-yellow-500 flex items-center justify-between gap-5 py-3  font-extrabold text-3xl text-white px-20">
+                            <IoIosArrowBack onClick={toggleMenu} />
+                            <p className="">
+                                Menu
+                            </p>
+                        </div>
+                        <div className=" bg-white py-4 gap-2 ">
+                            <div className="flex items-center rounded-md justify-center  gap-2 border-2 border-gray-300 mx-10 py-2 px-3 cursor-pointer">
+                                <div><FaGoogle></FaGoogle></div>
+                                <p>Đăng nhập bằng Google</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="xl:px-0 px-10 xl:py-0 py-5  xl:flex">
+                        <button>Danh mục</button>
+
+                        <ul className="xl:flex gap-4 xl:ms-4  ">
+                            <li className="xl:mt-0 mt-5">
+                                <a href="" className="">Trang chủ</a>
+                            </li>
+                            <li className="xl:mt-0 mt-5">
+                                <a href="#">Giới thiệu</a>
+                            </li>
+                            <li className="xl:mt-0 mt-5">
+                                <a href="#">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+                <div className="none xl:block hidden ">
+                    0945 1221 52
+                </div>
+            </div>
+        </div>
+
     );
 }
 export default Nav;
